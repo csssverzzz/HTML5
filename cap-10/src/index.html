@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Batman – Microdata Ejemplo</title>
+</head>
+<body>
+
+    
+    <section itemscope itemtype="http://schema.org/Person">
+
+        <h1 itemprop="name">Batman</h1>
+
+        <img itemprop="image" src="batman.jpg" alt="Imagen de Batman" width="250">
+
+        <p>
+            <strong>Alias:</strong>
+            <span itemprop="alternateName">El Caballero de la Noche</span>
+        </p>
+
+        <p>
+            <strong>Descripción:</strong>
+            <span itemprop="description">
+                Batman es un vigilante enmascarado que protege Ciudad Gótica usando inteligencia, tecnología,
+                artes marciales y una voluntad inquebrantable.
+            </span>
+        </p>
+
+        <p>
+            <strong>Ocupación:</strong>
+            <span itemprop="jobTitle">Vigilante</span>
+        </p>
+
+        <p>
+            <strong>Página oficial:</strong>
+            <a itemprop="url" href="https://www.dc.com/characters/batman">DC – Batman</a>
+        </p>
+
+        
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <h3>Domicilio</h3>
+            <p>
+                <span itemprop="streetAddress">1007 Mountain Drive</span><br>
+                <span itemprop="addressLocality">Gotham City</span>, 
+                <span itemprop="addressRegion">New Jersey</span><br>
+                <span itemprop="postalCode">07001</span>
+            </p>
+        </div>
+
+        
+        <meta itemprop="latitude" content="40.7128">
+        <meta itemprop="longitude" content="-74.0060">
+
+        
+        <div itemprop="owns" itemscope itemtype="http://schema.org/Product">
+            <h3>Vehículo</h3>
+            <s
