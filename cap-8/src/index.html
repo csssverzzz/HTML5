@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" manifest="app.manifest">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Mi App Offline</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f8f8f8;
+        color: #333;
+        margin: 0;
+        padding: 2em;
+      }
+
+      h1 {
+        color: #3a7bd5;
+      }
+
+      button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #mensaje {
+        margin-top: 20px;
+        font-size: 1.1em;
+        color: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🌐 Mi Aplicación Offline</h1>
+    <p>Esta página sigue funcionando aunque te desconectes de Internet.</p>
+    <button onclick="saludo()">Probar Script</button>
+    <p id="mensaje"></p>
+    <script>
+      function saludo() {
+        document.getElementById("mensaje").textContent = "¡Hola! Esta app funciona incluso sin Internet.";
+      }
+
+      // Monitorear eventos del AppCache
+      if (window.applicationCache) {
+        const appCache = window.applicationCache;
+
+        appCache.addEventListener("checking", () => console.log("Verificando el manifiesto..."));
+        appCache.addEventListener("downloading", () => console.log("Descargando recursos..."));
+        appCache.addEventListener("cached", () => console.log("Aplicación lista para usarse sin conexión."));
+        appCache.addEventListener("updateready", () => {
+          alert("Nueva versión disponible. Recarga la página para actualizar.");
+          appCache.swapCache();
+        });
+        appCache.addEventListener("error", () => console.log("Error en AppCache."));
+      }
+    </script>
+  </body>
+</html>
