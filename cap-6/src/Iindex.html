@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Geolocalización HTML5</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f4ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #333;
+      }
+
+      h1 {
+        color: #0066cc;
+      }
+
+      button {
+        background-color: #0066cc;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #004d99;
+      }
+
+      #resultado {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Geolocalización en HTML5</h1>
+    <p>Haz clic en el botón para obtener tu ubicación actual.</p>
+    <button onclick="obtenerUbicacion()">Mostrar ubicación</button>
+    <div id="resultado"></div>
+
+    <script>
+      function obtenerUbicacion() {
+        const salida = document.getElementById("resultado");
+
+        if (!navigator.geolocation) {
+          salida.innerHTML = "Tu navegador no soporta la geolocalización.";
+          return;
+        }
+
+        salida.innerHTML = "Obteniendo ubicación...";
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude.toFixed(5);
+            const lon = pos.coords.longitude.toFixed(5);
+            salida.innerHTML = `
+              <strong>Ubicación encontrada:</strong><br>
+              Latitud: ${lat}<br>
+              Longitud: ${lon}
+            `;
+          },
+          (error) => {
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                salida.innerHTML = "Permiso denegado por el usuario.";
+                break;
+              case error.POSITION_UNAVAILABLE:
+                salida.innerHTML = "Información de ubicación no disponible.";
+                break;
+              case error.TIMEOUT:
+                salida.innerHTML = "La solicitud de ubicación expiró.";
+                break;
+              default:
+                salida.innerHTML = "Ocurrió un error desconocido.";
+            }
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      }
+    </script>
+  </body>
+</html>
