@@ -1,51 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Carita Feliz</title>
-</head>
-<body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Carita Feliz</title>
+  </head>
+  <body>
+    <canvas id="a" width="300" height="250"></canvas>
 
-<canvas id="a" width="300" height="250"></canvas>
+    <script>
+      var a_canvas = document.getElementById("a");
+      var context = a_canvas.getContext("2d");
 
-<script>
-var a_canvas = document.getElementById("a");
-var context = a_canvas.getContext("2d");
+      // Cabeza
+      context.beginPath();
+      context.arc(150, 100, 80, 0, Math.PI * 2, false);
+      context.fillStyle = "#FFDE00";
+      context.fill();
+      context.strokeStyle = "#000";
+      context.lineWidth = 2;
+      context.stroke();
 
+      // Ojo izquierdo
+      context.beginPath();
+      context.arc(120, 80, 8, 0, Math.PI * 2, false);
+      context.fillStyle = "#000";
+      context.fill();
 
-context.beginPath();
-context.arc(150, 100, 80, 0, Math.PI * 2, false);
-context.fillStyle = "#FFDE00";
-context.fill();
-context.strokeStyle = "#000";
-context.lineWidth = 2;
-context.stroke();
+      // Ojo derecho
+      context.beginPath();
+      context.arc(180, 80, 8, 0, Math.PI * 2, false);
+      context.fill();
 
+      // Sonrisa
+      context.beginPath();
+      context.arc(150, 110, 40, 0, Math.PI, false);
+      context.strokeStyle = "#000";
+      context.lineWidth = 3;
+      context.stroke();
 
-context.beginPath();
-context.arc(120, 80, 8, 0, Math.PI * 2, false);
-context.fillStyle = "#000";
-context.fill();
-
-
-context.beginPath();
-context.arc(180, 80, 8, 0, Math.PI * 2, false);
-context.fill();
-
-
-context.beginPath();
-context.arc(150, 110, 40, 0, Math.PI, false);
-context.strokeStyle = "#000";
-context.lineWidth = 3;
-context.stroke();
-
-
-context.font = "16px sans-serif";
-context.textAlign = "center";
-context.textBaseline = "top";
-context.fillStyle = "#000";
-context.fillText("batifeliz :)", 150, 200);
-</script>
-
-</body>
+      // Texto
+      context.font = "16px sans-serif";
+      context.textAlign = "center";
+      context.textBaseline = "top";
+      context.fillStyle = "#000";
+      context.fillText("batifeliz :)", 150, 200);
+    </script>
+  </body>
 </html>
