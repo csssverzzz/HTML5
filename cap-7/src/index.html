@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Ejemplo de Almacenamiento Local</title>
+  </head>
+  <body>
+    <h1>Ejemplo de Local Storage</h1>
+    <label for="nombre">Escribe tu nombre:</label>
+    <input id="nombre" placeholder="Tu nombre aquí" type="text">
+    <button id="guardar">Guardar</button>
+    <h2 id="mensaje"></h2>
+    <script>
+      if (localStorage.getItem("nombreUsuario")) {
+        document.getElementById("mensaje").textContent =
+          "Bienvenido de nuevo, " + localStorage.getItem("nombreUsuario") + " 👋";
+      }
+
+      document.getElementById("guardar").addEventListener("click", () => {
+        const nombre = document.getElementById("nombre").value;
+        localStorage.setItem("nombreUsuario", nombre);
+        document.getElementById("mensaje").textContent =
+          "Hola, " + nombre + " 👋 (Tu nombre se ha guardado)";
+      });
+    </script>
+  </body>
+</html>
